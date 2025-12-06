@@ -1,0 +1,26 @@
+{
+  "name": "express-exercise-students",
+  "version": "1.0.0",
+  "description": "En este ejercicio vamos a crear _pequeños servidores_ Express para practicar NPM y el propio framework Express. Es decir tienes que crear cada uno de los ficheros nombre : server1.js, server2.js, etc.",
+  "main": "server3b.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adurancastillo96/express-exercise-students.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adurancastillo96/express-exercise-students/issues"
+  },
+  "homepage": "https://github.com/adurancastillo96/express-exercise-students#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
