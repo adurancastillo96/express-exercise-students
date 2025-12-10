@@ -3,8 +3,7 @@
 const express = require("express");
 const path = require("path");
 const morgan = require("morgan");
-const fs = require("fs");
-const { palindrome } = require("./utils/palindrome/index.js");
+const { palindrome } = require("./utils/palindrome/index");
 
 // IMPORT DATA
 // Importamos los archivos JSON para usarlos en las rutas de la API
@@ -22,8 +21,6 @@ const app = express();
 // Here you should set up the required middleware:
 // - `express.static()` to serve static files from the `public` folder
 app.use(express.static(path.join(__dirname, "public")));
-// - Poder parsear las peticiones de tipo POST que vienen de un formulario
-app.use(express.urlencoded({ extended: true }));
 // - `express.json()` to parse incoming requests with JSON payloads
 // app.use(express.json());
 // - `morgan` logger to log all incoming requests
@@ -31,7 +28,7 @@ app.use(morgan("dev"));
 
 // ROUTES
 // Start defining your routes here:
-// GET / - Index
+// GET /team - TEAM
 app.get("/", (_req, res) => {
     res.sendFile(path.join(__dirname, "views", "index.html"));
 });
@@ -67,24 +64,6 @@ app.get("/check", (req, res) => {
     console.log("🚀 ~ file: server5.js:64 ~ app.get ~ palabra:", palabra);
     const isPalindrom = palindrome(palabra);
     res.send(`La palabra ${palabra} ${isPalindrom ? 'es' : '<strong>no es</strong>'} un palindromo.`);
-});
-
-// GET /formulario
-app.get('/formulario', (_req, res) => {
-    res.status(200).sendFile(path.join(__dirname, "views", "formulario.html"));
-});
-
-// POST /formulario
-app.post("/formulario", (req, res) => {
-    const {name, email, message} = req.body;
-    const newLine =  `${name},${email},${message}\n`;
-
-    // nueva línea en el fichero CSV
-    fs.appendFileSync(path.join(__dirname, "data", "inscritos.csv"), newLine);
-
-    // Respondemos al cliente
-    res.send("Mensaje enviado correctamente.");
-
 });
 
 // GET /api/projects - JSON Format

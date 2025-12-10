@@ -10,7 +10,7 @@ const morgan = require("morgan");
 // const articles = require('./data/articles.json');
 
 // ATTRIBUTES
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 5005;
 
 // CREATE EXPRESS APP
 // Here you should create your Express app:
@@ -28,11 +28,6 @@ app.use(morgan("dev"));
 // ROUTES
 // Start defining your routes here:
 // GET /team - TEAM
-app.get("/", (_req, res) => {
-    res.sendFile(path.join(__dirname, "views", "index.html"));
-});
-
-// GET /team - TEAM
 app.get("/team", (_req, res) => {
     res.sendFile(path.join(__dirname, "views", "team.html"));
 });
@@ -40,13 +35,6 @@ app.get("/team", (_req, res) => {
 // GET /about - ABOUT
 app.get("/about", (_req, res) => {
     res.sendFile(path.join(__dirname, "views", "about.html"));
-});
-
-// GET /patient/:idPatient - PATIENT
-app.get("/patient/:idPatient", (req, res) => {
-    const idPatient = req.params.idPatient;
-    const documentPath =path.join(__dirname, "data", `${idPatient}.pdf`);
-    res.sendFile(documentPath);
 });
 
 // GET /api/projects - JSON Format
@@ -63,4 +51,4 @@ app.use((_req, res, next) => {
 // Make your Express server listen on port 5005:
 app.listen(PORT, () => {
     console.log(`Server listening on port http://localhost:${PORT}`);
-});
+})
